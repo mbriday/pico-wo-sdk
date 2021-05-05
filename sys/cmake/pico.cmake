@@ -1,3 +1,5 @@
+set(CMAKE_CROSSCOMPILING ON)
+
 #directory names
 set(SYS_DIR ${CMAKE_SOURCE_DIR}/../sys)
 
@@ -78,5 +80,6 @@ target_link_libraries(${PROJECT_NAME}
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY LINK_DEPENDS ${LINKER_DIR}/${LINKER_SCRIPT})
 
-#flashing rules
-#include("../sys/cmake/flash.cmake") 
+#imply that elf2uf2 is in the path…
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+	COMMAND elf2uf2 ${PROJECT_NAME} ${PROJECT_NAME}.uf2)
