@@ -1,4 +1,8 @@
-blink/build
+1_blink/build
+2_systick/build
+
+# vim
+.*.swp
 
 # Prerequisites
 *.d
